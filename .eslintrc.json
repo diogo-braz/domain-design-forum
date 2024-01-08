@@ -1,3 +1,7 @@
 {
-  "extends": ["eslint:recommended", "google"]
+  "extends": ["@rocketseat/eslint-config/node"],
+  "rules": {
+    "no-useless-constructor": "off",
+    "@typescript-eslint/adjacent-overload-signatures": "off"
+  }
 }
