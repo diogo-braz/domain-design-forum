@@ -30,7 +30,7 @@ export class CommentOnQuestionUseCase {
       throw new Error('Question not found')
     }
 
-    const questionComment = await QuestionComment.create({
+    const questionComment = QuestionComment.create({
       authorId: new UniqueEntityID(authorId),
       questionId: new UniqueEntityID(questionId),
       content,
