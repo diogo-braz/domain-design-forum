@@ -1,6 +1,6 @@
-import { randomUUID } from "crypto";
+import { randomUUID } from 'crypto';
 
-export class UniqueEntityID {
+class UniqueEntityID {
   private value: string;
 
   toString() {
@@ -15,3 +15,5 @@ export class UniqueEntityID {
     this.value = value ?? randomUUID();
   }
 }
+
+export default UniqueEntityID;

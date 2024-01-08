@@ -1,3 +1,17 @@
 {
-  "extends": ["eslint:recommended", "google"]
+  "extends": ["airbnb-base", "airbnb-typescript/base"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./"
+  },
+  "settings": {
+      "import/resolver": {
+      "typescript": {}
+      }
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+      "@typescript-eslint",
+      "import"
+  ]
 }

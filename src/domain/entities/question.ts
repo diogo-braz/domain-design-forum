@@ -1,8 +1,8 @@
-import { Slug } from "./value-objects/slug";
-import { Entity } from "@/core/entities/entity";
-import { UniqueEntityID } from "@/core/entities/unique-entity-id";
-import { Optional } from "@/core/types/optional";
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
+import Entity from '@/core/entities/entity';
+import UniqueEntityID from '@/core/entities/unique-entity-id';
+import { Optional } from '@/core/types/optional';
+import Slug from './value-objects/slug';
 
 interface QuestionProps {
   authorId: UniqueEntityID;
@@ -14,19 +14,35 @@ interface QuestionProps {
   updatedAt?: Date;
 }
 
-export class Question extends Entity<QuestionProps> {
+class Question extends Entity<QuestionProps> {
   get authorId() {
     return this.props.authorId;
+  }
+
+  set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
+    this.props.bestAnswerId = bestAnswerId;
   }
 
   get bestAnswerId() {
     return this.props.bestAnswerId;
   }
-  
+
+  set title(title: string) {
+    this.props.title = title;
+    this.props.slug = Slug.createFromText(title);
+
+    this.touch();
+  }
+
   get title() {
     return this.props.title;
   }
-  
+
+  set content(content: string) {
+    this.props.content = content;
+    this.touch();
+  }
+
   get content() {
     return this.props.content;
   }
@@ -51,27 +67,11 @@ export class Question extends Entity<QuestionProps> {
     return this.props.content
       .substring(0, 120)
       .trimEnd()
-      .concat("...");
+      .concat('...');
   }
 
   private touch() {
     this.props.updatedAt = new Date();
-  }
-
-  set title(title: string) {
-    this.props.title = title;
-    this.props.slug = Slug.createFromText(title);
-
-    this.touch();
-  }
-  
-  set content(content: string) {
-    this.props.content = content;
-    this.touch();
-  }
-
-  set bestAnswerId(bestAnswerId: UniqueEntityID | undefined) {
-    this.props.bestAnswerId = bestAnswerId;
   }
 
   static create(props: Optional<QuestionProps, 'createdAt' | 'slug'>, id?: UniqueEntityID) {
@@ -84,3 +84,5 @@ export class Question extends Entity<QuestionProps> {
     return question;
   }
 }
+
+export default Question;

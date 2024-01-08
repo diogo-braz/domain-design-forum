@@ -1,7 +1,9 @@
-import { UniqueEntityID } from "./unique-entity-id";
+/* eslint-disable no-underscore-dangle */
+import UniqueEntityID from './unique-entity-id';
 
-export class Entity<Props> {
+class Entity<Props> {
   private _id: UniqueEntityID;
+
   protected props: Props;
 
   get id() {
@@ -13,3 +15,5 @@ export class Entity<Props> {
     this._id = id ?? new UniqueEntityID();
   }
 }
+
+export default Entity;

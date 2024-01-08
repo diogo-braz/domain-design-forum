@@ -1,14 +1,13 @@
-export class Slug {
+class Slug {
   public value: string;
 
   constructor(value: string) {
     this.value = value;
   }
 
-
   static createFromText(text: string) {
     const slugText = text
-      .normalize("NFKD")
+      .normalize('NFKD')
       .toLowerCase()
       .trim()
       .replace(/\s+/g, '-')
@@ -20,3 +19,5 @@ export class Slug {
     return new Slug(slugText);
   }
 }
+
+export default Slug;

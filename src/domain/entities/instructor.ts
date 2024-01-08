@@ -1,11 +1,11 @@
-import { Entity } from "@/core/entities/entity";
-import { UniqueEntityID } from "@/core/entities/unique-entity-id";
+import Entity from '@/core/entities/entity';
+import UniqueEntityID from '@/core/entities/unique-entity-id';
 
 interface InstructorProps {
   name: string;
 }
 
-export class Instructor extends Entity<InstructorProps> {
+class Instructor extends Entity<InstructorProps> {
   get name() {
     return this.props.name;
   }
@@ -16,3 +16,5 @@ export class Instructor extends Entity<InstructorProps> {
     return instructor;
   }
 }
+
+export default Instructor;

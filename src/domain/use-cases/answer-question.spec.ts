@@ -1,11 +1,12 @@
-import { AnswerQuestionUseCase } from "./answer-question";
-import { AnswerRepository } from "@/domain/repositories/answers-repository";
-import { Answer } from "@/domain/entities/answer";
+import { AnswerRepository } from '@/domain/repositories/answers-repository';
+import Answer from '@/domain/entities/answer';
+import AnswerQuestionUseCase from './answer-question';
 
 const fakeAnswerRepository: AnswerRepository = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   create: async (answer: Answer) => {
-    return;
-  }
+
+  },
 };
 
 test('create an answer', async () => {
@@ -18,4 +19,4 @@ test('create an answer', async () => {
   });
 
   expect(answer.content).toBe('Nova resposta');
-})
+});
