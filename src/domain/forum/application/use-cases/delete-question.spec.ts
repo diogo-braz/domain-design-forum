@@ -42,8 +42,8 @@ describe('Delete Question', () => {
 
     expect(() => {
       return sut.execute({
-        authorId: 'author-1',
-        questionId: 'question-2',
+        authorId: 'author-2',
+        questionId: 'question-1',
       })
     }).rejects.toBeInstanceOf(Error)
   })
